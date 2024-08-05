@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'allauth.account',
 
     # Local Apps
-    'accounts',
+    'accounts.apps.AccountsConfig',
+    'resumes.apps.ResumesConfig',
 
 ]
 
