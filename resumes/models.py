@@ -8,7 +8,7 @@ class PersonalInfo(models.Model):
         (2, 'Female'),
         (3, 'Rather Not Say'),
     )
-    user = models.ForeignKey()
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -19,3 +19,12 @@ class PersonalInfo(models.Model):
 
     def __str__(self):
         return f'{self.user}: {self.title}'
+
+
+class ContactInfo(models.Model):
+    resume = models.ForeignKey(PersonalInfo, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=11)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    Address = models.TextField()
+
