@@ -46,3 +46,18 @@ class LanguageInfo(models.Model):
     level = models.CharField(choices=Language_CHOICES, max_length=1)
 
 
+class EducationInfo(models.Model):
+    SECTION_CHOICES = (
+        (1, 'Associate degree'),
+        (2, 'Bachelor’s degree (B.A)'),
+        (3, 'Master’s degree (M.A)'),
+        (4, 'Doctorate'),
+        (5, 'Perfect'),
+    )
+
+    resume = models.ForeignKey(PersonalInfo, on_delete=models.CASCADE)
+    university = models.CharField(max_length=300)
+    section = models.CharField(choices=SECTION_CHOICES, max_length=1)
+    start_year = models.DateField()
+    end_year = models.DateField(blank=True)
+
